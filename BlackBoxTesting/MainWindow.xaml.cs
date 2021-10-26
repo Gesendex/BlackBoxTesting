@@ -27,35 +27,41 @@ namespace BlackBoxTesting
 
         private void BtnRes2_Click(object sender, RoutedEventArgs e)
         {
-            double x1, x2, x3, x4, y1, y2, y3, y4;
-            x1 = double.Parse(TxbP1x.Text);
-            x2 = double.Parse(TxbP2x.Text);
-            x3 = double.Parse(TxbP3x.Text);
-            x4 = double.Parse(TxbP4x.Text);
-            y1 = double.Parse(TxbP1y.Text);
-            y2 = double.Parse(TxbP2y.Text);
-            y3 = double.Parse(TxbP3y.Text);
-            y4 = double.Parse(TxbP4y.Text);
-            Point p1, p2, p3, p4;
-            p1 = new Point(x1, y1);
-            p2 = new Point(x2, y2);
-            p3 = new Point(x3, y3);
-            p4 = new Point(x4, y4);
+            Point p1 = new Point(double.Parse(TxbP1x.Text), double.Parse(TxbP1y.Text));
+            Point p2 = new Point(double.Parse(TxbP2x.Text), double.Parse(TxbP2y.Text));
+            Point p3 = new Point(double.Parse(TxbP3x.Text), double.Parse(TxbP3y.Text));
+            Point p4 = new Point(double.Parse(TxbP4x.Text), double.Parse(TxbP4y.Text));
             if (ExpressionCalculator.IsSquare(p1, p2, p3, p4))
             {
                 TxbResult2.Text = "Square";
             }
-            else if (ExpressionCalculator.IsPryamougolnik(p1, p2, p3, p4))
+            else if (ExpressionCalculator.IsRectangle(p1, p2, p3, p4))
             {
-                TxbResult2.Text = "Pryamugolnik";
+                TxbResult2.Text = "Rectangle";
             }
-            else if (ExpressionCalculator.IsRomb(p1, p2, p3, p4))
+            else if (ExpressionCalculator.IsRhomb(p1, p2, p3, p4))
             {
-                TxbResult2.Text = "Romb";
+                TxbResult2.Text = "Rhomb";
             }
             else if (ExpressionCalculator.IsParallelogram(p1, p2, p3, p4))
             {
                 TxbResult2.Text = "Parallelogram";
+            }
+            else if (ExpressionCalculator.IsIsoscelesTrapezoid(p1, p2, p3, p4))
+            {
+                TxbResult2.Text = "Isosceles trapezoid";
+            }
+            else if (ExpressionCalculator.IsRectangularTrapezoid(p1, p2, p3, p4))
+            {
+                TxbResult2.Text = "Rectangular trapezoid";
+            }
+            else if (ExpressionCalculator.IsTrapezoid(p1, p2, p3, p4))
+            {
+                TxbResult2.Text = "Trapezoid";
+            }
+            else
+            {
+                TxbResult2.Text = "Quadrilateral";
             }
         }
 

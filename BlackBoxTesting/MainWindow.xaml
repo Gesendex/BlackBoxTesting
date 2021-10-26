@@ -65,7 +65,7 @@
                                 </StackPanel>
                             </StackPanel>
                             <Button x:Name="BtnRes2" Content="Вычислить" Margin="5" Width="100" HorizontalAlignment="Left" Click="BtnRes2_Click"/>
-                            <TextBox x:Name="TxbResult2" Margin="5" Width="100" IsReadOnly="True" HorizontalAlignment="Left" />
+                            <TextBox x:Name="TxbResult2" Margin="5" Width="210" IsReadOnly="True" HorizontalAlignment="Left" />
                         </StackPanel>
                     </Grid>
                 </TabItem>

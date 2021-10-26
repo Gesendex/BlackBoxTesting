@@ -35,25 +35,6 @@ namespace BlackBoxTesting
             return Math.Sqrt(Math.Pow(a.X - b.X, 2) + Math.Pow(a.Y - b.Y, 2));
         }
         /// <summary>
-        /// Модуль вектора
-        /// </summary>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        public static double GetModule(Point v)
-        {
-            return Math.Sqrt(v.X * v.X + v.Y * v.Y);
-        }
-        /// <summary>
-        /// Угол между векторами
-        /// </summary>
-        /// <param name="v1"></param>
-        /// <param name="v2"></param>
-        /// <returns></returns>
-        public static double GetAngle(Point v1, Point v2)
-        {
-            return Math.Acos(GetSkalyar(v1, v2) / (GetModule(v1) * GetModule(v2)));
-        }
-        /// <summary>
         /// Находит вектор прямой заданной двумя точками
         /// </summary>
         /// <param name="a"></param>
@@ -84,7 +65,7 @@ namespace BlackBoxTesting
         /// <param name="c"></param>
         /// <param name="d"></param>
         /// <returns></returns>
-        public static bool IsRomb(Point a, Point b, Point c, Point d)
+        public static bool IsRhomb(Point a, Point b, Point c, Point d)
         {
             double ab = GetLenght(a,b), bc = GetLenght(b, c), cd = GetLenght(c, d), da = GetLenght(d, a);
             return ab == bc && bc == cd && cd == da;
@@ -99,13 +80,8 @@ namespace BlackBoxTesting
         /// <returns></returns>
         public static bool IsSquare(Point a, Point b, Point c, Point d)
         {
-            Point v1 = GetVector(b, a);
-            Point v2 = GetVector(b, c);
-            Point v3 = GetVector(c, b);
-            Point v4 = GetVector(c, d);
-            return IsPryamougolnik(a, b, c, d) && IsRomb(a, b, c, d);
+            return IsRectangle(a, b, c, d) && IsRhomb(a, b, c, d);
         }
-     
         /// <summary>
         /// Проверка на парралелограм
         /// </summary>
@@ -130,13 +106,58 @@ namespace BlackBoxTesting
         /// <param name="c"></param>
         /// <param name="d"></param>
         /// <returns></returns>
-        public static bool IsPryamougolnik(Point a, Point b, Point c, Point d)
+        public static bool IsRectangle(Point a, Point b, Point c, Point d)
         {
             Point v1 = GetVector(a, b);
             Point v2 = GetVector(c, d);
             Point v3 = GetVector(b, c);
             Point v4 = GetVector(d, a);
             return IsColleniar(v1, v2) && IsColleniar(v3, v4) && GetSkalyar(v1, v3) == 0 && GetSkalyar(v2, v4) == 0;
+        }
+
+        /// <summary>
+        /// Проверка на трапецию
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public static bool IsTrapezoid(Point a, Point b, Point c, Point d)
+        {
+            Point v1 = GetVector(a, b);
+            Point v2 = GetVector(b, c);
+            Point v3 = GetVector(c, d);
+            Point v4 = GetVector(d, a);
+            return (IsColleniar(v1, v3) && !IsColleniar(v2, v4)) || (!IsColleniar(v1, v3) && IsColleniar(v2, v4));
+        }
+        /// <summary>
+        /// Проверка на равнобедренную трапецию
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public static bool IsIsoscelesTrapezoid(Point a, Point b, Point c, Point d)
+        {
+            return (GetLenght(b, c) == GetLenght(d, a) || GetLenght(a, b) == GetLenght(c, d)) && IsTrapezoid(a, b, c, d);
+        }
+        /// <summary>
+        /// Проверка на прямоугольную трапецию
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public static bool IsRectangularTrapezoid(Point a, Point b, Point c, Point d)
+        {
+            Point v1 = GetVector(a, b);
+            Point v2 = GetVector(b, c);
+            Point v3 = GetVector(c, d);
+            Point v4 = GetVector(d, a);
+            return IsTrapezoid(a, b, c, d) && (GetSkalyar(v1, v2) == 0 || GetSkalyar(v3, v4) == 0);
         }
     }
 }
