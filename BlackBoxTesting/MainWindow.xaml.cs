@@ -45,6 +45,10 @@ namespace BlackBoxTesting
             {
                 TxbResult2.Text = "Square";
             }
+            else if (ExpressionCalculator.IsPryamougolnik(p1, p2, p3, p4))
+            {
+                TxbResult2.Text = "Pryamugolnik";
+            }
             else if (ExpressionCalculator.IsRomb(p1, p2, p3, p4))
             {
                 TxbResult2.Text = "Romb";
