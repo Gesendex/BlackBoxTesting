@@ -15,15 +15,15 @@
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel Width="100" Margin="5">
                                     <TextBlock Text="a" HorizontalAlignment="Center"/>
-                                    <TextBox x:Name="TxbA"/>
+                                    <TextBox x:Name="TxbA" KeyDown="TxbA_KeyDown"/>
                                 </StackPanel>
                                 <StackPanel Width="100" Margin="5">
                                     <TextBlock Text="b" HorizontalAlignment="Center"/>
-                                    <TextBox x:Name="TxbB"/>
+                                    <TextBox x:Name="TxbB" KeyDown="Txb_KeyDown"/>
                                 </StackPanel>
                                 <StackPanel Width="100" Margin="5">
                                     <TextBlock Text="c" HorizontalAlignment="Center"/>
-                                    <TextBox x:Name="TxbC"/>
+                                    <TextBox x:Name="TxbC" KeyDown="Txb_KeyDown"/>
                                 </StackPanel>
                             </StackPanel>
                             <Button x:Name="BtnRes1" Content="Вычислить" Margin="5" Width="100" HorizontalAlignment="Left" Click="BtnRes1_Click"/>
